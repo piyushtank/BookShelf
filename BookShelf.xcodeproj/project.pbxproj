@@ -93,6 +93,7 @@
 		0E6527FE23816F540003DC06 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				0EBF114E23792ECD0014A93C /* NewBooksTableViewController.h */,
 				0EBF114F23792ECD0014A93C /* NewBooksTableViewController.m */,
 				0EBF115123792EF50014A93C /* SearchBooksTableViewController.h */,
 				0EBF115223792EF50014A93C /* SearchBooksTableViewController.m */,
@@ -127,7 +128,6 @@
 			children = (
 				0EBF111E23792CD10014A93C /* AppDelegate.h */,
 				0EBF111F23792CD10014A93C /* AppDelegate.m */,
-				0EBF114E23792ECD0014A93C /* NewBooksTableViewController.h */,
 				0E6527FE23816F540003DC06 /* ViewControllers */,
 				0EE33EF023793C4B0074419E /* Book.h */,
 				0EE33EF123793C4B0074419E /* Book.m */,
