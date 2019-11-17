@@ -8,10 +8,13 @@
 
 #import "SearchBooksTableViewController.h"
 #import "Book.h"
+#import "BookStoreUtils.h"
 
 @interface SearchBooksTableViewController ()
 
 @property (nonatomic, strong) NSMutableArray<Book *> *books;
+@property (strong, nonatomic) UISearchController *searchController;
+
 
 @end
 
@@ -19,6 +22,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
+    self.searchController.searchResultsUpdater = self;
+    self.searchController.dimsBackgroundDuringPresentation = NO;
+    [self.searchController.searchBar sizeToFit];
+    self.tableView.tableHeaderView = self.searchController.searchBar;
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -32,27 +41,50 @@
     // Dispose of any resources that can be recreated.
 }
 
+# pragma mark - UISearchResultsUpdating
+
+- (void)updateSearchResultsForSearchController:(UISearchController *)searchController {
+    
+    NSString *searchText = searchController.searchBar.text;
+    NSString *urlString = [NSString stringWithFormat:@"https://api.itbook.store/1.0/search/%@", searchText];
+    
+    NSLog(@"updateSearchResultsForSearchController - searchText = %@", searchText);
+    
+    if (searchText) {
+        __weak typeof(self) weakSelf = self;
+        [BookStoreUtils getBooksWithUrlString:urlString completionBlock:^(NSArray<Book *> *books) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                __strong typeof(weakSelf) strongSelf = weakSelf;
+                strongSelf.books = [books copy];
+                [strongSelf.tableView reloadData];
+                
+            });
+        }];
+    }
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return 0;
+    return [self.books count];
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SBreuseIdentifier" forIndexPath:indexPath];
     
-    // Configure the cell...
+    Book *book = [self.books objectAtIndex:indexPath.row];
+    cell.imageView.image = book.image;
+    cell.textLabel.text = book.title;
+    cell.detailTextLabel.text = book.subTitle;
     
     return cell;
 }
-*/
+
 
 /*
 // Override to support conditional editing of the table view.

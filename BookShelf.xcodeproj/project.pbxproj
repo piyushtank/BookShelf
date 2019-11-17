@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E5D2DE723811FB700936654 /* BookStoreUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E5D2DE623811FB700936654 /* BookStoreUtils.m */; };
 		0EBF111D23792CD10014A93C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EBF111C23792CD10014A93C /* main.m */; };
 		0EBF112023792CD10014A93C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EBF111F23792CD10014A93C /* AppDelegate.m */; };
 		0EBF112623792CD10014A93C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EBF112423792CD10014A93C /* Main.storyboard */; };
@@ -37,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E5D2DE523811FB700936654 /* BookStoreUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookStoreUtils.h; sourceTree = "<group>"; };
+		0E5D2DE623811FB700936654 /* BookStoreUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookStoreUtils.m; sourceTree = "<group>"; };
 		0EBF111823792CD10014A93C /* BookShelf.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookShelf.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EBF111C23792CD10014A93C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0EBF111E23792CD10014A93C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -120,6 +123,8 @@
 				0EBF111B23792CD10014A93C /* Supporting Files */,
 				0EE33EF023793C4B0074419E /* Book.h */,
 				0EE33EF123793C4B0074419E /* Book.m */,
+				0E5D2DE523811FB700936654 /* BookStoreUtils.h */,
+				0E5D2DE623811FB700936654 /* BookStoreUtils.m */,
 			);
 			path = BookShelf;
 			sourceTree = "<group>";
@@ -283,6 +288,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E5D2DE723811FB700936654 /* BookStoreUtils.m in Sources */,
 				0EBF112023792CD10014A93C /* AppDelegate.m in Sources */,
 				0EBF111D23792CD10014A93C /* main.m in Sources */,
 				0EBF115023792ECD0014A93C /* NewBooksTableViewController.m in Sources */,

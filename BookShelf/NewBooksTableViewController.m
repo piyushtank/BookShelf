@@ -8,6 +8,7 @@
 
 #import "NewBooksTableViewController.h"
 #import "Book.h"
+#import "BookStoreUtils.h"
 
 NSString *kNewBookURLString = @"https://api.itbook.store/1.0/new";
 
@@ -23,50 +24,14 @@ NSString *kNewBookURLString = @"https://api.itbook.store/1.0/new";
     [super viewDidLoad];
     
     __weak typeof(self) weakSelf = self;
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-        __strong NewBooksTableViewController *strongSelf = weakSelf;
-        NSError *error = nil;
-
-        NSData *jsonData = [NSData dataWithContentsOfURL:[NSURL URLWithString:kNewBookURLString]];
-        if (!error && jsonData) {
-            NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:jsonData
-                                                                 options:0
-                                                                   error:&error];
-            NSArray *booksList = dict[@"books"];
-            if (!error && dict) {
-                if ([dict[@"error"] isEqualToString:@"0"]) {
-                    NSString *numStr = dict[@"total"];
-                    NSInteger total = atoi([numStr UTF8String]);
-                    NSAssert(total == [booksList count], @"total doesn't match the retrieved books");
-                    
-                    Book *book = nil;
-                    NSMutableArray *books = [NSMutableArray array];
-                    
-                    for (NSDictionary *bookDict in booksList) {
-                        book = [[Book alloc] initWithTitle:bookDict[@"title"]
-                                                  subTitle:bookDict[@"subtitle"]
-                                                    isbn13:bookDict[@"isbn13"]
-                                                     price:bookDict[@"isbn13"]
-                                                  imageUrl:bookDict[@"image"]
-                                                       url:bookDict[@"url"]];
-                        [books addObject:book];
-                    }
-                    
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        strongSelf.books = [books copy];
-                        [strongSelf.tableView reloadData];
-                    });
-                } else {
-                    NSLog(@"Error returned by server retriving books");
-                }
-                
-            } else {
-                NSLog(@"Error - json serialization, error = %@", error);
-            }
-        } else {
-            NSLog(@"Error - retriving json data, error = %@", error);
-        }
-    });
+    [BookStoreUtils getBooksWithUrlString:kNewBookURLString completionBlock:^(NSArray<Book *> *books) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            __strong typeof(weakSelf) strongSelf = weakSelf;
+            strongSelf.books = [books copy];
+            [strongSelf.tableView reloadData];
+            
+        });
+    }];
     
 }
 
