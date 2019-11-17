@@ -90,6 +90,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E6527FE23816F540003DC06 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				0EBF114F23792ECD0014A93C /* NewBooksTableViewController.m */,
+				0EBF115123792EF50014A93C /* SearchBooksTableViewController.h */,
+				0EBF115223792EF50014A93C /* SearchBooksTableViewController.m */,
+				0EC955482381449A006939BB /* DetailsViewController.h */,
+				0EC955492381449A006939BB /* DetailsViewController.m */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
 		0EBF110F23792CD10014A93C = {
 			isa = PBXGroup;
 			children = (
@@ -116,20 +128,16 @@
 				0EBF111E23792CD10014A93C /* AppDelegate.h */,
 				0EBF111F23792CD10014A93C /* AppDelegate.m */,
 				0EBF114E23792ECD0014A93C /* NewBooksTableViewController.h */,
-				0EBF114F23792ECD0014A93C /* NewBooksTableViewController.m */,
-				0EBF115123792EF50014A93C /* SearchBooksTableViewController.h */,
-				0EBF115223792EF50014A93C /* SearchBooksTableViewController.m */,
+				0E6527FE23816F540003DC06 /* ViewControllers */,
+				0EE33EF023793C4B0074419E /* Book.h */,
+				0EE33EF123793C4B0074419E /* Book.m */,
+				0E5D2DE523811FB700936654 /* BookStoreUtils.h */,
+				0E5D2DE623811FB700936654 /* BookStoreUtils.m */,
 				0EBF112423792CD10014A93C /* Main.storyboard */,
 				0EBF112723792CD10014A93C /* Assets.xcassets */,
 				0EBF112923792CD10014A93C /* LaunchScreen.storyboard */,
 				0EBF112C23792CD10014A93C /* Info.plist */,
 				0EBF111B23792CD10014A93C /* Supporting Files */,
-				0EE33EF023793C4B0074419E /* Book.h */,
-				0EE33EF123793C4B0074419E /* Book.m */,
-				0E5D2DE523811FB700936654 /* BookStoreUtils.h */,
-				0E5D2DE623811FB700936654 /* BookStoreUtils.m */,
-				0EC955482381449A006939BB /* DetailsViewController.h */,
-				0EC955492381449A006939BB /* DetailsViewController.m */,
 			);
 			path = BookShelf;
 			sourceTree = "<group>";

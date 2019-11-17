@@ -2,7 +2,7 @@
 //  Book.h
 //  BookShelf
 //
-//  Created by Bhavisha Tank on 11/10/19.
+//  Created by Piyush Tank on 11/10/19.
 //  Copyright © 2019 PiyushTank. All rights reserved.
 //
 
@@ -19,8 +19,10 @@
 @property (nonatomic, copy) NSString *url;
 @property (nonatomic, copy) NSString *rating;
 @property (nonatomic, copy) NSString *desc;
-@property (nonatomic, copy) NSString *author;
-@property (nonatomic, copy) NSString *publication;
+@property (nonatomic, copy) NSString *authors;
+@property (nonatomic, copy) NSString *publisher;
+@property (nonatomic, copy) NSString *year;
+
 
 @end
 
@@ -34,8 +36,9 @@
 @property (nonatomic, strong, readonly) NSString *url;
 @property (nonatomic, strong, readonly) NSString *rating;
 @property (nonatomic, strong, readonly) NSString *desc;
-@property (nonatomic, strong, readonly) NSString *author;
-@property (nonatomic, strong, readonly) NSString *publication;
+@property (nonatomic, strong, readonly) NSString *authors;
+@property (nonatomic, strong, readonly) NSString *publisher;
+@property (nonatomic, strong, readonly) NSString *year;
 
 + (instancetype)bookWithBuilder:(void (^)(BookBuilder *))builderBlock;
 

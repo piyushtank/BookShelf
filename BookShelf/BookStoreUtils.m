@@ -2,7 +2,7 @@
 //  BookStoreUtils.m
 //  BookShelf
 //
-//  Created by Bhavisha Tank on 11/16/19.
+//  Created by Piyush Tank on 11/16/19.
 //  Copyright © 2019 PiyushTank. All rights reserved.
 //
 
@@ -34,9 +34,8 @@
                     for (NSDictionary *bookDict in booksList) {
                         book = [Book bookWithBuilder:^(BookBuilder *builder) {
                             builder.title = bookDict[@"title"];
-                            builder.title = bookDict[@"title"];
+                            builder.price = bookDict[@"price"];
                             builder.subTitle = bookDict[@"subtitle"];
-                            builder.isbn13 = bookDict[@"isbn13"];
                             builder.isbn13 = bookDict[@"isbn13"];
                             builder.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:
                                                                     [NSURL URLWithString:bookDict[@"image"]]]];
@@ -59,7 +58,7 @@
 
 
 + (void)getBookDetailsWithUrlString:(NSString *)urlString
-                    completionBlock:(void (^) (Book *books))completionBlock {
+                    completionBlock:(void (^) (Book *book))completionBlock {
     NSAssert([urlString length] > 0, @"urlString passed to getBooksWithUrlString is empty or nil");
     NSAssert(completionBlock, @"completionBlock passed to getBooksWithUrlString is nil");
     
@@ -73,20 +72,20 @@
                                                                        error:&error];
             if (!error && bookDict) {
                 if ([bookDict[@"error"] isEqualToString:@"0"]) {
- s
                     book = [Book bookWithBuilder:^(BookBuilder *builder) {
                         builder.title = bookDict[@"title"];
-                        builder.title = bookDict[@"title"];
                         builder.subTitle = bookDict[@"subtitle"];
-                        builder.isbn13 = bookDict[@"isbn13"];
                         builder.isbn13 = bookDict[@"isbn13"];
                         builder.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:
                                                                 [NSURL URLWithString:bookDict[@"image"]]]];
                         builder.url = bookDict[@"url"];
                         builder.rating = bookDict[@"rating"];
                         builder.desc = bookDict[@"desc"];
-                        builder.author = bookDict[@"author"];
-                        builder.publication = bookDict[@"publication"];
+                        builder.price = bookDict[@"price"];
+                        builder.authors = bookDict[@"authors"];
+                        builder.price = bookDict[@"price"];
+                        builder.publisher = bookDict[@"publisher"];
+                        builder.year = bookDict[@"year"];
                     }];
                     
                 } else {
@@ -98,7 +97,7 @@
         } else {
             NSLog(@"Error - retriving json data, error = %@", error);
         }
-        completionBlock([book copy]);
+        completionBlock(book);
     });
 }
 

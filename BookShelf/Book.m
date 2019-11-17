@@ -2,7 +2,7 @@
 //  Book.m
 //  BookShelf
 //
-//  Created by Bhavisha Tank on 11/10/19.
+//  Created by Piyush Tank on 11/10/19.
 //  Copyright © 2019 PiyushTank. All rights reserved.
 //
 
@@ -31,8 +31,9 @@
         _url = builder.url;
         _rating = builder.rating;
         _desc = builder.desc;
-        _author = builder.author;
-        _publication = builder.publication;
+        _authors = builder.authors;
+        _publisher = builder.publisher;
+        _year = builder.year;
     }
     return self;
 }
