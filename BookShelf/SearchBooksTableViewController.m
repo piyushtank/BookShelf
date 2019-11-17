@@ -15,7 +15,6 @@
 @property (nonatomic, strong) NSMutableArray<Book *> *books;
 @property (strong, nonatomic) UISearchController *searchController;
 
-
 @end
 
 @implementation SearchBooksTableViewController
@@ -23,17 +22,32 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.navigationItem.title = @"Search";
+    [self setupSearchController];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    if (self.searchController) {
+        self.definesPresentationContext = YES;
+    } else {
+        [self setupSearchController];
+    }
+}
+
+- (void) viewDidDisappear:(BOOL)animated {
+    self.searchController.active = NO;
+    [super viewDidDisappear:animated];
+    self.definesPresentationContext = NO;
+    [super viewWillDisappear:animated];
+}
+
+- (void)setupSearchController {
     self.searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
     self.searchController.searchResultsUpdater = self;
     self.searchController.dimsBackgroundDuringPresentation = NO;
     [self.searchController.searchBar sizeToFit];
     self.tableView.tableHeaderView = self.searchController.searchBar;
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -50,7 +64,7 @@
     
     NSLog(@"updateSearchResultsForSearchController - searchText = %@", searchText);
     
-    if (searchText) {
+    if (searchText && self.searchController.active) {
         __weak typeof(self) weakSelf = self;
         [BookStoreUtils getBooksWithUrlString:urlString completionBlock:^(NSArray<Book *> *books) {
             dispatch_async(dispatch_get_main_queue(), ^{

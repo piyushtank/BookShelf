@@ -33,6 +33,7 @@ NSString *kNewBookURLString = @"https://api.itbook.store/1.0/new";
         });
     }];
     
+    self.navigationItem.title = @"New Books";
 }
 
 - (void)didReceiveMemoryWarning {
