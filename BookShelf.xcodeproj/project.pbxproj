@@ -17,6 +17,7 @@
 		0EBF114123792CD10014A93C /* BookShelfUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EBF114023792CD10014A93C /* BookShelfUITests.m */; };
 		0EBF115023792ECD0014A93C /* NewBooksTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EBF114F23792ECD0014A93C /* NewBooksTableViewController.m */; };
 		0EBF115323792EF50014A93C /* SearchBooksTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EBF115223792EF50014A93C /* SearchBooksTableViewController.m */; };
+		0EC9554A2381449A006939BB /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC955492381449A006939BB /* DetailsViewController.m */; };
 		0EE33EF223793C4B0074419E /* Book.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EE33EF123793C4B0074419E /* Book.m */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +59,8 @@
 		0EBF114F23792ECD0014A93C /* NewBooksTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewBooksTableViewController.m; sourceTree = "<group>"; };
 		0EBF115123792EF50014A93C /* SearchBooksTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchBooksTableViewController.h; sourceTree = "<group>"; };
 		0EBF115223792EF50014A93C /* SearchBooksTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchBooksTableViewController.m; sourceTree = "<group>"; };
+		0EC955482381449A006939BB /* DetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
+		0EC955492381449A006939BB /* DetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
 		0EE33EF023793C4B0074419E /* Book.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Book.h; sourceTree = "<group>"; };
 		0EE33EF123793C4B0074419E /* Book.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Book.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -125,6 +128,8 @@
 				0EE33EF123793C4B0074419E /* Book.m */,
 				0E5D2DE523811FB700936654 /* BookStoreUtils.h */,
 				0E5D2DE623811FB700936654 /* BookStoreUtils.m */,
+				0EC955482381449A006939BB /* DetailsViewController.h */,
+				0EC955492381449A006939BB /* DetailsViewController.m */,
 			);
 			path = BookShelf;
 			sourceTree = "<group>";
@@ -292,6 +297,7 @@
 				0EBF112023792CD10014A93C /* AppDelegate.m in Sources */,
 				0EBF111D23792CD10014A93C /* main.m in Sources */,
 				0EBF115023792ECD0014A93C /* NewBooksTableViewController.m in Sources */,
+				0EC9554A2381449A006939BB /* DetailsViewController.m in Sources */,
 				0EE33EF223793C4B0074419E /* Book.m in Sources */,
 				0EBF115323792EF50014A93C /* SearchBooksTableViewController.m in Sources */,
 			);

@@ -8,25 +8,35 @@
 
 #import "Book.h"
 
+@implementation BookBuilder
+@end
+
 @implementation Book
 
-- (instancetype)initWithTitle:(NSString *)title
-                     subTitle:(NSString *)subTitle
-                       isbn13:(NSString *)isbn13
-                        price:(NSString *)price
-                     imageUrl:(NSString *)imageUrl
-                          url:(NSString *)url {
++ (instancetype)bookWithBuilder:(void (^)(BookBuilder *))builderBlock {
+    BookBuilder *builder = [BookBuilder new];
+    builderBlock(builder);
+    return [[Book alloc] initWithBuilder:builder];
+    
+}
+
+- (instancetype)initWithBuilder:(BookBuilder *)builder {
     self = [super init];
     if (self) {
-        _title = title;
-        _subTitle = subTitle;
-        _isbn13 = isbn13;
-        _price = price;
-        _image = [UIImage imageWithData:[NSData dataWithContentsOfURL:
-                                         [NSURL URLWithString:imageUrl]]];
-        _url = url;
+        _title = builder.title;
+        _subTitle = builder.subTitle;
+        _isbn13 = builder.isbn13;
+        _price = builder.price;
+        _image = builder.image;
+        _url = builder.url;
+        _rating = builder.rating;
+        _desc = builder.desc;
+        _author = builder.author;
+        _publication = builder.publication;
     }
     return self;
 }
+
+
 
 @end
