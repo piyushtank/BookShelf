@@ -13,7 +13,7 @@
 @interface BookStoreUtils : NSObject
 
 + (void)getBooksWithUrlString:(nonnull NSString *)urlString
-              completionBlock:(nonnull void (^) (NSArray<Book *> * _Nonnull books))completionBlock;
+              completionBlock:(nonnull void (^) (NSArray<Book *> * _Nonnull books, NSInteger total, NSString *urlString))completionBlock;
 
 + (void)getBookDetailsWithUrlString:(nonnull NSString *)urlString
                     completionBlock:(nonnull void (^) (Book * _Nonnull book))completionBlock;

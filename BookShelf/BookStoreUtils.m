@@ -12,13 +12,14 @@
 @implementation BookStoreUtils
 
 + (void)getBooksWithUrlString:(NSString *)urlString
-              completionBlock:(void (^) (NSArray<Book *> *books))completionBlock {
+              completionBlock:(void (^) (NSArray<Book *> *books, NSInteger total, NSString *urlString))completionBlock {
     NSAssert([urlString length] > 0, @"urlString passed to getBooksWithUrlString is empty or nil");
     NSAssert(completionBlock, @"completionBlock passed to getBooksWithUrlString is nil");
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
         NSError *error = nil;
         NSMutableArray *books = [NSMutableArray array];
+        NSInteger total = 0;
         NSData *jsonData = [NSData dataWithContentsOfURL:[NSURL URLWithString:urlString]];
         if (!error && jsonData) {
             NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:jsonData
@@ -28,8 +29,9 @@
             if (!error && dict) {
                 if ([dict[@"error"] isEqualToString:@"0"]) {
                     
-                    // TODO: Use dict[@"total"] and display it on screen
-
+                    NSString *totalStr = dict[@"total"];
+                    total = [totalStr integerValue];
+                    
                     Book *book = nil;
                     for (NSDictionary *bookDict in booksList) {
                         book = [Book bookWithBuilder:^(BookBuilder *builder) {
@@ -52,7 +54,7 @@
         } else {
             NSLog(@"Error - retriving json data, error = %@", error);
         }
-        completionBlock([books copy]);
+        completionBlock([books copy], total, urlString);
     });
 }
 

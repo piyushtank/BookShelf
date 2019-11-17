@@ -26,7 +26,9 @@ static NSString * const kNewBookURLString = @"https://api.itbook.store/1.0/new";
     [super viewDidLoad];
     
     __weak typeof(self) weakSelf = self;
-    [BookStoreUtils getBooksWithUrlString:kNewBookURLString completionBlock:^(NSArray<Book *> *books) {
+    [BookStoreUtils getBooksWithUrlString:kNewBookURLString completionBlock:^(NSArray<Book *> *books,
+                                                                              NSInteger total,
+                                                                              NSString *urlString) {
         dispatch_async(dispatch_get_main_queue(), ^{
             __strong typeof(weakSelf) strongSelf = weakSelf;
             strongSelf.books = [books copy];

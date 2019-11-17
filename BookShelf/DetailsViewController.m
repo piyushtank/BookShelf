@@ -27,7 +27,6 @@ static NSString * const kDetailsURLString = @"https://api.itbook.store/1.0/books
     self.hyperLinkTextView.delegate = self;
     
     NSString *urlString = [NSString stringWithFormat:@"%@%@", kDetailsURLString, self.isbn13];
-
     
     [BookStoreUtils getBookDetailsWithUrlString:urlString
                                 completionBlock:^(Book *book) {
@@ -37,8 +36,6 @@ static NSString * const kDetailsURLString = @"https://api.itbook.store/1.0/books
             strongSelf.imageView.image = book.image;
             strongSelf.titleLabel.text = book.title;
             strongSelf.subtitleLabel.text = [NSString stringWithFormat:@"By %@\n\nRating: %@\n\nPrice: %@", book.authors, book.rating, book.price];
-            
-            
             
             strongSelf.hyperLinkTextView.attributedText = [[NSAttributedString alloc] initWithString:@"Click here for more details"
                                                                                           attributes:@{ NSLinkAttributeName: [NSURL URLWithString:book.url] }];
