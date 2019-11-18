@@ -47,12 +47,10 @@ The `DetailsViewController` is view controller displays fetches the details of t
 
 ### TODOs
 
+At present the repod does not contain any tests -
+
 - [ ] Write test cases for proper main thread usage
 - [ ] Write UI integration test cases for app flow
 - [ ] Prepare Json responses for new books, details and search to validate the view controller functionalities.
-- [ ] Mock tests
-
-## Enhancments - Coming soon
-- Add notes for books in details view controller 
- 
+- [ ] Mock tests for TableViews and DataSource 
 
