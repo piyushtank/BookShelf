@@ -42,8 +42,7 @@ static NSString * const kSearchBookURLString = @"https://api.itbook.store/1.0/se
     }
 }
 
-- (void) viewDidDisappear:(BOOL)animated {
-    self.searchController.active = NO;
+- (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     self.definesPresentationContext = NO;
     [super viewWillDisappear:animated];
@@ -105,10 +104,6 @@ static NSString * const kSearchBookURLString = @"https://api.itbook.store/1.0/se
         NSLog (@"pageUrlString = %@", pageUrlString);
         if ([pageUrlString rangeOfString:self.theUrlString].location != NSNotFound) {
             dispatch_async(dispatch_get_main_queue(), ^{
-                if (pageIndex == 30) {
-                    int i = 10;
-                    i++;
-                }
                 __strong typeof(weakSelf) strongSelf = weakSelf;
                 if ([pageUrlString rangeOfString:self.theUrlString].location != NSNotFound) {
                     NSUInteger booksCount = [strongSelf.books count];
