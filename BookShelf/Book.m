@@ -34,6 +34,7 @@
         _authors = builder.authors;
         _publisher = builder.publisher;
         _year = builder.year;
+        _pages = builder.pages;
     }
     return self;
 }

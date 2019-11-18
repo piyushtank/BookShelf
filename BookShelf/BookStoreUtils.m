@@ -88,6 +88,7 @@
                         builder.price = bookDict[@"price"];
                         builder.publisher = bookDict[@"publisher"];
                         builder.year = bookDict[@"year"];
+                        builder.pages = bookDict[@"pages"];
                     }];
                     
                 } else {

@@ -41,7 +41,7 @@ static NSString * const kDetailsURLString = @"https://api.itbook.store/1.0/books
                                                                                           attributes:@{ NSLinkAttributeName: [NSURL URLWithString:book.url] }];
             strongSelf.hyperLinkTextView.editable = NO;
             strongSelf.hyperLinkTextView.dataDetectorTypes = UIDataDetectorTypeAll;
-            strongSelf.detailsLabel.text = [NSString stringWithFormat:@"Subtitle: %@\n\n Publication: %@\n\nYear: %@\n\nPages: %@", book.subTitle, book.publisher, book.year, book.rating];
+            strongSelf.detailsLabel.text = [NSString stringWithFormat:@"Subtitle: %@\n\n Publication: %@\n\nYear: %@\n\nPages: %@", book.subTitle, book.publisher, book.year, book.pages];
 
         });
     }];

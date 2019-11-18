@@ -22,7 +22,7 @@
 @property (nonatomic, copy) NSString *authors;
 @property (nonatomic, copy) NSString *publisher;
 @property (nonatomic, copy) NSString *year;
-
+@property (nonatomic, copy) NSString *pages;
 
 @end
 
@@ -39,6 +39,7 @@
 @property (nonatomic, strong, readonly) NSString *authors;
 @property (nonatomic, strong, readonly) NSString *publisher;
 @property (nonatomic, strong, readonly) NSString *year;
+@property (nonatomic, strong, readonly) NSString *pages;
 
 + (instancetype)bookWithBuilder:(void (^)(BookBuilder *))builderBlock;
 
